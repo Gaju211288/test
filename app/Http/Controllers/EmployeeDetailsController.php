@@ -41,7 +41,7 @@ class EmployeeDetailsController extends Controller
             return response()->json(['succes' => true, 'empDatas' =>$table_view]);
 
 
-            
+            dsfdsf
 
         }else{
             return view('employee');
