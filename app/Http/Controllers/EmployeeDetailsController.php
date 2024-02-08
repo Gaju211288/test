@@ -68,7 +68,7 @@ class EmployeeDetailsController extends Controller
         
         ],);
 
-        dd($charge);
+        
 
 
     }
