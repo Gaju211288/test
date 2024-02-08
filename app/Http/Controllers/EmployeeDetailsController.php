@@ -40,6 +40,7 @@ class EmployeeDetailsController extends Controller
              $table_view =  view("/employee", ['empDatas' => $empDatas])->render();
             return response()->json(['succes' => true, 'empDatas' =>$table_view]);
 
+
             
 
         }else{
