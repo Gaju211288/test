@@ -53,6 +53,8 @@ class EmployeeDetailsController extends Controller
     public function makePayment(Request $request){
 
 
+
+
          \Stripe\Stripe::setApiKey('sk_test_51Od9aGAp1cH9DYZxD9VVo2ii7cLPO4OUOx0r696PCtM78Z9ZP3nGtqcoyLUbHYfue6D3WJu7DvFTQQfWjTY1srpS00MY15xgFg');
 
         \Stripe\Stripe::setVerifySslCerts(false);
