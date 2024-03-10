@@ -72,3 +72,78 @@ class EmployeeDetailsController extends Controller
 
     }
 }
+
+
+
+// Step 1:- Install your laravel project.
+//          laravel new excellara
+
+// Step 2:- composer require maatwebsite/excel
+
+// Install the Laravel excel package by running the composer command as above.
+
+// Step 3:- php artisan vendor:publish --provider="Maatwebsite\Excel\ExcelServiceProvider" --tag=config
+
+// To publish the config file, run the vendor publish command as above. Running this command will 
+// create a new config file named and located in the config/excel.php directory.
+
+// Step 4:- Create Export Class
+         
+// php artisan make:export UsersExport --model=User
+
+// Step 5:- Paste the below code in your file
+
+// <?php
+
+// namespace App\Exports;
+
+// use App\Models\User;
+// use Maatwebsite\Excel\Concerns\FromCollection;
+// use Maatwebsite\Excel\Concerns\WithCustomCsvSettings;
+// use Maatwebsite\Excel\Concerns\WithHeadings;
+
+// class UsersExport implements FromCollection, WithCustomCsvSettings, WithHeadings
+// {
+//     public function getCsvSettings(): array
+//     {
+//         return [
+//             'delimiter' => ','
+//         ];
+//     }
+
+//     public function headings(): array
+//     {
+//         return ["Name", "Email"];
+//     }
+
+//     /**
+//     * @return \Illuminate\Support\Collection
+//     */
+//     public function collection()
+//     {
+//         return User::select('name','email')->get();
+//     }
+// } 
+
+// Step 6:- Create Routes
+
+// Route::get('/export-csv', [UserController::class,'export']);
+
+// Step 7:- Create cotroller and paster below code like:- UserController
+
+// <?php
+
+// namespace App\Http\Controllers;
+
+// use Illuminate\Http\Request;
+// use App\Models\Users;
+// use App\Exports\UsersExport;
+// use Maatwebsite\Excel\Facades\Excel;
+
+// class UserController extends Controller
+// {
+//     public function export() 
+//     {
+//         return Excel::download(new UsersExport, 'users.csv');
+//     }
+// }
